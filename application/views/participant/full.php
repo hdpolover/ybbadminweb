@@ -1,28 +1,5 @@
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="row ml-1">
-      <a href="<?= base_url();?>participant/tambahfull" class="btn btn-primary mb-4">Add New Fully Funded Participants</a>
-  				<div class="filter-group ml-2">
-
-              <?php
-            $conn = new mysqli('localhost', 'root', '', 'ybbadmin_db')
-            or die ('Cannot connect to db');
-
-                $result = $conn->query("SELECT id_summit, description from summits");
-                echo "<select class='form-control' name='summit' id='myInput' onclick='myFunction()'>";
-                echo '<option value="" selected="selected">All Summit</option>';
-                while ($row = $result->fetch_assoc()) {
-
-                              unset($id, $name);
-                              $id = $row['id_summit'];
-                              $name = $row['description'];
-                              echo '<option value="'.$name.'">'.$name.'</option>';
-            }
-                echo "</select>";?>
-
-        		</div>
-
-      </div>
 
     <!-- Custom Filter -->
      <!--<h1 class="h3 mb-4 text-gray-800"><?= $title?></h1> -->
@@ -30,7 +7,30 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Fully Funded Participants</h6>
+            <div class="row">
+              <h6 class="mt-2 font-weight-bold text-primary">Fully Funded Participants</h6>
+                  <a href="<?= base_url();?>participant/tambahfull" class="btn btn-primary ml-2">Add New Fully Funded Participants</a>
+            				<div class="filter-group ml-2">
+                    <?php
+                    $conn = new mysqli('localhost', 'root', '', 'ybbadmin_db')
+                    or die ('Cannot connect to db');
+
+                    $result = $conn->query("SELECT id_summit, description from summits");
+                    echo "<select class='form-control' name='summit' id='myInput' onclick='myFunction()'>";
+                    echo '<option value="" selected="selected">All Summit</option>';
+                    while ($row = $result->fetch_assoc()) {
+
+                      unset($id, $name);
+                      $id = $row['id_summit'];
+                      $name = $row['description'];
+                      echo '<option value="'.$name.'">'.$name.'</option>';
+
+                      }
+                      echo "</select>";?>
+
+                  		</div>
+
+              </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -99,7 +99,7 @@ function myFunction() {
   table = document.getElementById("dataTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[3];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

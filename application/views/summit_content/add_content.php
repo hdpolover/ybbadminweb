@@ -17,9 +17,9 @@
         <label for="desc" class="col-sm-4 col-form-label">Summit</label>
         <div class="col-sm-8">
           <select class="form-control" id="summit" name="summit">
-            <?php foreach ($summit as $s) { ?>
+            <?php foreach ($summit as $s) : ?>
               <option value="<?php echo $s['id_summit']; ?>"><?php echo $s['description']; ?> </option>
-            <?php } ?>
+            <?php endforeach ?>
           </select>
         </div>
       </div>

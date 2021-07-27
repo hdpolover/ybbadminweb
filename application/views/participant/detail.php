@@ -16,9 +16,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Participant Detail</h6>
                                 </div>
                                 <div class="card-body">
+                                  <?php foreach ($participants as $p): ?>
                                   <div class="row">
                                     <div class="col">
-                                      <?php foreach ($peserta as $p): ?>
                                         <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $p['photo'] ).'">';  ?>
                                         <div class="row">
                                           <div class="col">
@@ -220,13 +220,10 @@
                                         </div>
 
                                       </div>
-<?php endforeach ?>
+
                                   </div>
-
-                                      <a href="<?= base_url(); ?>peserta" class="btn btn-primary">Kembali</a>
-
-
-
+                                      <a href="<?= base_url(); ?>participant" class="btn btn-primary mt-2">Kembali</a>
+                                      <?php endforeach ?>
                                 </div>
                             </div>
 

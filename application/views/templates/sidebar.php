@@ -29,18 +29,18 @@
 
 
     <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePar"
+                    aria-expanded="true" aria-controls="collapsePar">
                     <i class="fas fa-user fa-cog"></i>
                     <span>Participants</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapsePar" class="collapse" aria-labelledby="headingPar" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Submenu:</h6>
                         <a class="collapse-item" href="<?= base_url('participant');?>">Participants</a>
                         <a class="collapse-item" href="cards.html">Valid Participants</a>
-                        <a class="collapse-item active" href="<?= base_url('participant/full');?>">Fully Funded Participants</a>
+                        <a class="collapse-item" href="<?= base_url('participant/full');?>">Fully Funded Participants</a>
                     </div>
                 </div>
             </li>
@@ -135,19 +135,121 @@
 
 </ul>
 <!-- End of Sidebar -->
+
+
 <script>
-// Get the container element
-var btnContainer = document.getElementById("accordionSidebar");
+// Add active class to the current button (highlight it)
+var header1 = document.getElementById("collapseTwo");
+var header2 = document.getElementById("collapsePar");
+var header3 = document.getElementById("collapseAdmin");
+var header4 = document.getElementById("collapseOther");
 
-// Get all buttons with class="btn" inside the container
-var btns = btnContainer.getElementsByClassName("collapse-item");
-
-// Loop through the buttons and add the active class to the current/clicked button
-for (var i = 0; i < btns.length; i++) {
+var btns1 = header1.getElementsByClassName("collapse-item");
+for (var i = 0; i < btns1.length; i++) {
   btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) {
     current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
+  }
+  this.className += " active";
+  });
+}
+
+var btns2 = header2.getElementsByClassName("collapse-item");
+for (var i = 0; i < btns2.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" active", "");
+  }
+  this.className += " active";
+  });
+}
+
+var btns3 = header3.getElementsByClassName("collapse-item");
+for (var i = 0; i < btns3.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" active", "");
+  }
+  this.className += " active";
+  });
+}
+
+var btns4 = header4.getElementsByClassName("collapse-item");
+for (var i = 0; i < btns4.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" active", "");
+  }
+  this.className += " active";
+  });
+}
+</script>
+
+<script>
+var header5 = document.getElementById("collapseTwo");
+var header6 = document.getElementById("collapsePar");
+var header7 = document.getElementById("collapseAdmin");
+var header8 = document.getElementById("collapseOther");
+
+var btnc1 = header5.getElementsByClassName("collapse");
+for (var i = 0; i < btnc1.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("show");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" show", "");
+  }
+  this.className += " show";
+  });
+}
+
+var btnc2 = header6.getElementsByClassName("collapse");
+for (var i = 0; i < btnc2.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("show");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" show", "");
+  }
+  this.className += " show";
+  });
+}
+
+var btnc3 = header7.getElementsByClassName("collapse");
+for (var i = 0; i < btnc3.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("show");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" show", "");
+  }
+  this.className += " show";
+  });
+}
+
+var btnc4 = header8.getElementsByClassName("collapse");
+for (var i = 0; i < btnc4.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("show");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" show", "");
+  }
+  this.className += " show";
+  });
+}
+</script>
+
+<script>
+var header9 = document.getElementById("accordionSidebar");
+var btnav = header9.getElementsByClassName("nav-item");
+for (var i = 0; i < btnav.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) {
+    current[0].className = current[0].className.replace(" active", "");
+  }
+  this.className += " active";
   });
 }
 </script>

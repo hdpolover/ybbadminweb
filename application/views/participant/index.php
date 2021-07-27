@@ -81,7 +81,7 @@
                             <td>
                               <a href="<?= base_url(); ?>participant/detail/<?= $p['id_participant']; ?>"
                               class="btn btn-info">Detail</a>
-                              <a href="<?= base_url(); ?>participant/detail/<?= $p['id_participant']; ?>"
+                              <a href="<?= base_url(); ?>participant/edit/<?= $p['id_participant']; ?>"
                               class="btn btn-warning">Edit</a>
                               <!-- <a href="<?= base_url(); ?>peserta/hapus/<?= $p['id_participant']; ?>"
                                   class="btn btn-danger" onclick="return confirm('Apa anda ingin menghapus data tersebut?');">Hapus</a> -->
