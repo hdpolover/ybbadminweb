@@ -3,9 +3,9 @@
     <div class="row ml-1">
       <a href="<?= base_url();?>attendance/add_attendance" class="btn btn-primary mb-4">Add New Attendance</a>
 
-        		</div>
+    </div>
 
-      </div>
+    
 
     <!-- Custom Filter -->
      <!--<h1 class="h3 mb-4 text-gray-800"><?= $title?></h1> -->

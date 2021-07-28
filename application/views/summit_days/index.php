@@ -1,11 +1,8 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="row ml-1">
-      <a href="<?= base_url();?>attendance/tambah" class="btn btn-primary mb-4">Add Meal Type</a>
-
-        		</div>
-
-      </div>
+      <a href="<?= base_url();?>summit_days/add_summitdays" class="btn btn-primary mb-4">Add Submit Day</a>
+    </div>
 
     <!-- Custom Filter -->
      <!--<h1 class="h3 mb-4 text-gray-800"><?= $title?></h1> -->

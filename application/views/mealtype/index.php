@@ -1,11 +1,8 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="row ml-1">
-      <a href="<?= base_url();?>attendance/tambah" class="btn btn-primary mb-4">Add Meal Type</a>
-
-        		</div>
-
-      </div>
+      <a href="<?= base_url();?>mealtype/add_mealtype" class="btn btn-primary mb-4">Add Meal Type</a>
+    </div>
 
     <!-- Custom Filter -->
      <!--<h1 class="h3 mb-4 text-gray-800"><?= $title?></h1> -->
@@ -13,8 +10,10 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+          <div class="row">
             <h6 class="m-0 font-weight-bold text-primary">Meal Attendance</h6>
         </div>
+    </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -27,14 +26,23 @@
                     </thead>
 
                     <tbody>
-                      
+                       <?php $i = 1; ?>
+                        <?php foreach ($mealtype as $mt) : ?>
+                            <tr>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?= $mt['description']; ?></td>
+                                <td>
+                                    <a href="#"
+                                      class="btn btn-danger">Edit</a> 
+                                </td>
+                            </tr>
+                            <?php $i++; ?>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
 
-</div>
 <!-- /.container-fluid -->
 
 </div>

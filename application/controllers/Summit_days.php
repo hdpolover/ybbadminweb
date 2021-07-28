@@ -28,5 +28,16 @@ class Summit_Days extends CI_Controller
     $this->load->view('templates/footer');
   }
 
-  
+  public function add_summitdays()
+  {
+    // code...
+    $data['title'] = 'Add New Summit Days';
+    $data['current_admin'] = $this->db->get_where('admins', ['username' => $this->session->userdata('username')])->row_array();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('summit_days/add_summit_days');
+    $this->load->view('templates/footer');
+  }
 }

@@ -33,12 +33,12 @@ class Attendance extends CI_Controller
     
      // code...
     $data['title'] = 'Add New Attendance';
-    //$data['current_admin'] = $this->db->get_where('admins', ['username' => $this->session->userdata('username')])->row_array();
+    $data['current_admin'] = $this->db->get_where('admins', ['username' => $this->session->userdata('username')])->row_array();
     //$data['summit'] = $this->summit->get_active_summits();
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar', $data);
-    //$this->load->view('templates/topbar', $data);
+    $this->load->view('templates/topbar', $data);
     $this->load->view('attendance/add_attendance', $data);
     $this->load->view('templates/footer');
   }
