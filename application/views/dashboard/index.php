@@ -15,13 +15,41 @@ foreach ($subtheme as $key => $value) {
     $subtheme_total[] = $value['total'];
 }
 
+foreach ($age as $key => $value) {
+    $age_label[] = $value['age'];
+    $age_total[] = $value['total'];
+}
+
+foreach ($register_per_day as $key => $value) {
+    $register_date_label[] = date("F d", strtotime($value['created_date']));
+    $register_date_total[] = $value['total'];
+}
+
 $color_count = 0;
-if (sizeof($gender_label) >= sizeof($nationality_label) && sizeof($gender_label) >= sizeof($subtheme_label)) {
-    $color_count = sizeof($gender_label);
-} else if (sizeof($nationality_label) >= sizeof($gender_label) && sizeof($nationality_label) >= sizeof($subtheme_label)) {
-    $color_count = sizeof($nationality_label);
-} else if (sizeof($subtheme_label) >= sizeof($gender_label) && sizeof($subtheme_label) >= sizeof($nationality_label)) {
-    $color_count = sizeof($subtheme_label);
+if (
+    count($gender_label) >= count($nationality_label)
+    && count($gender_label) >= count($subtheme_label)
+    && count($gender_label) >= count($age_label)
+) {
+    $color_count = count($gender_label);
+} else if (
+    count($nationality_label) >= count($gender_label)
+    && count($nationality_label) >= count($subtheme_label)
+    && count($nationality_label) >= count($age_label)
+) {
+    $color_count = count($nationality_label);
+} else if (
+    count($subtheme_label) >= count($gender_label)
+    && count($subtheme_label) >= count($nationality_label)
+    && count($subtheme_label) >= count($age_label)
+) {
+    $color_count = count($subtheme_label);
+} else if (
+    count($age_label) >= count($gender_label)
+    && count($age_label) >= count($nationality_label)
+    && count($age_label) >= count($subtheme_label)
+) {
+    $color_count = count($age_label);
 }
 
 $colors = [];
@@ -170,20 +198,35 @@ for ($i = 0; $i < $color_count; $i++) {
             </div>
         </div>
 
-        <!-- <div class="col-xl-8 col-lg-7">
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Registration</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-bar">
-                            <canvas id="myBarChart"></canvas>
-                        </div>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Registered Participants Total per Day</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="register_per_day"></canvas>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Participant Ages</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4">
+                        <canvas id="age"></canvas>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -301,5 +344,58 @@ for ($i = 0; $i < $color_count; $i++) {
                 displayColors: true
             }
         }
+    })
+</script>
+
+<!-- age chart -->
+<script>
+    var ctx3 = document.getElementById('age').getContext('2d')
+
+    const data3 = {
+        labels: <?php echo json_encode($age_label); ?>,
+        datasets: [{
+            label: 'Participant Ages',
+            data: <?php echo json_encode($age_total); ?>,
+            backgroundColor: [<?php foreach ($colors as $c) {
+                                    echo ('"' . $c . '",');
+                                } ?>],
+            hoverOffset: 4
+        }]
+    }
+
+    var myPieChart3 = new Chart(ctx3, {
+        type: 'pie',
+        data: data3,
+        options: {
+            maintainAspectRatio: false,
+            tooltips: {
+                backgroundColor: 'rgb(255,255,255)',
+                bodyFontColor: '#858796',
+                borderColor: '#dddfeb',
+                borderWidth: 2,
+                displayColors: true
+            }
+        }
+    })
+</script>
+
+<!-- register per day chart -->
+<script>
+    var ctx4 = document.getElementById('register_per_day').getContext('2d')
+
+    const data4 = {
+        labels: <?php echo json_encode($register_date_label); ?>,
+        datasets: [{
+            label: 'Registered Participants',
+            data: <?php echo json_encode($register_date_total); ?>,
+            fill: false,
+            borderColor: [<?php echo ('"' . $colors[0] . '",'); ?>],
+            tension: 0.2
+        }]
+    }
+
+    var myPieChart4 = new Chart(ctx4, {
+        type: 'line',
+        data: data4,
     })
 </script>

@@ -22,4 +22,16 @@ class Chart_model extends CI_Model
         $query = "SELECT subtheme, count(subtheme) AS `total` from participant_details GROUP by subtheme";
         return $this->db->query($query)->result_array();
     }
+
+    public function get_age()
+    {
+        $query = "SELECT TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) AS age, count(TIMESTAMPDIFF(YEAR, birthdate, CURDATE())) AS total from participant_details group by age";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function get_register_per_day()
+    {
+        $query = "SELECT date(created_date) as created_date, COUNT(date(created_date)) as total from participants GROUP by date(created_date)";
+        return $this->db->query($query)->result_array();
+    }
 }

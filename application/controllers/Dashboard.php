@@ -26,6 +26,8 @@ class Dashboard extends CI_Controller
     $data['gender'] = $this->chart->get_gender();
     $data['nationality'] = $this->chart->get_nationality();
     $data['subtheme'] = $this->chart->get_subtheme();
+    $data['age'] = $this->chart->get_age();
+    $data['register_per_day'] = $this->chart->get_register_per_day();
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar', $data);
