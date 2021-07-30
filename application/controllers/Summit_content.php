@@ -55,6 +55,45 @@ class Summit_content extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  public function edit($id)
+  {
+    // code...
+    $data['title'] = 'Summit Content Details';
+    $data['current_admin'] = $this->db->get_where('admins', ['username' => $this->session->userdata('username')])->row_array();
+    $data['summit_content'] = $this->summit_content->get_summit_content($id);
+    $data['summit'] = $this->summit->get_active_summits();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('summit_content/edit_content', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function save_edit()
+  {
+    $now = new DateTime();
+
+    $id_summit_content = $this->input->post('id_summit_content');
+    $modified_date = $now->format('Y-m-d H:i:s');
+    $description = $this->input->post('description');
+    $title = $this->input->post('title');
+    $status = $this->input->post('status');
+
+    $data = array(
+      'id_summit_content' => $id_summit_content,
+      'description' => $description,
+      'modified_date' => $modified_date,
+      'title' => $title,
+      'status' => $status,
+    );
+
+    $this->summit_content->save_update($data);
+
+    $this->session->set_flashdata('message', '<div class ="alert alert-success" style="text-align-center" role ="alert">Updated <?php echo $title; ?>!</div>');
+    redirect('summit_content/index');
+  }
+
   public function save_new_content()
   {
     $now = new DateTime();

@@ -1,7 +1,5 @@
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <a href="<?= base_url(); ?>others/add_new_summit" class="btn btn-primary mb-4">Add New Summit</a>
 
     <?php echo $this->session->flashdata('message'); ?>
@@ -21,6 +19,7 @@
                             <th>Registration Fee</th>
                             <th>Program Fee</th>
                             <th>Status</th>
+                            <th>Registration Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,8 +33,9 @@
                                 <td><?= 'Rp. ' . number_format($s['regist_fee'], 2, ',', '.'); ?></td>
                                 <td><?= 'Rp. ' . number_format($s['program_fee'], 2, ',', '.'); ?></td>
                                 <td><?= $s['status'] == 0 ? "Inactive" : "Active"; ?></td>
+                                <td><?= $s['regist_status'] == 0 ? "Inactive" : "Active"; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>others/view_summit_details/<?= $s['id_summit']; ?>" class="badge badge-danger">Edit</a>
+                                    <a href="<?= base_url(); ?>others/edit_summit/<?= $s['id_summit']; ?>" class="btn btn-danger">Edit</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

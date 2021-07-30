@@ -14,7 +14,8 @@ class Payment_model extends CI_Model
       INNER join participant_details pd on par.id_participant = pd.id_participant
       inner join admins a on a.id_admin = pay.id_admin
       inner join payment_types pt on pt.id_payment_type = pay.id_payment_type
-      inner join summits s on s.id_summit = par.id_summit";
+      inner join summits s on s.id_summit = par.id_summit
+      ORDER BY pay.id_payment DESC";
 
       return $this->db->query($query)->result_array();
     } else {
@@ -42,6 +43,13 @@ class Payment_model extends CI_Model
      . " AND pay.id_payment_type = " . $id_payment_type . "";
 
     return $this->db->query($query)->result_array();
+  }
+
+  public function get_pending_payment_total_count()
+  {
+    $this->db->where('payment_status', 0);
+    $num_rows = $this->db->count_all_results('payments');
+    return $num_rows;
   }
 
   public function add_payment($data)

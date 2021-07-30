@@ -23,18 +23,15 @@ class Summit_model extends CI_Model
     $this->db->insert('summits', $data);
   }
 
-  public function update($data)
+  public function save_update($data)
   {
-    $data = array(
-      'desc' => $data['desc'],
-      'regist_fee' => $data['regist_fee'],
-      'program_fee' => $data['program_fee'],
-      'status' => $data['status'],
-    );
-
-    $this->db->set($data);
+    $this->db->set('description', $data['description']);
+    $this->db->set('regist_fee', $data['regist_fee']);
+    $this->db->set('program_fee', $data['program_fee']);
+    $this->db->set('status', $data['status']);
+    $this->db->set('regist_status', $data['regist_status']);
     $this->db->where('id_summit', $data['id_summit']);
-    $this->db->update('summits');
+    return $this->db->update('summits');
   }
 
   public function get_summit($id = null)
@@ -52,16 +49,4 @@ class Summit_model extends CI_Model
     $this->db->from('summits');
     return $this->db->get()->result_array();
   }
-
-  // public function get_by_id($id)
-  // {
-  //   $this->db->where('id_summit', $id);
-  //   $result = $this->db->get('summits');
-
-  //   if ($result->num_rows() == 1) {
-  //     return $result->row_array();
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }

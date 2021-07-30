@@ -45,8 +45,21 @@ class Participant_model extends CI_Model
 
   public function get_participant_total_count()
   {
-    //$this->db->where('id_summit', $this->session->userdata['id_summit']);
     $num_rows = $this->db->count_all_results('participant_details');
+    return $num_rows;
+  }
+
+  public function get_valid_participant_total_count()
+  {
+    $this->db->where('status', 2);
+    $num_rows = $this->db->count_all_results('participants');
+    return $num_rows;
+  }
+
+  public function get_fixed_participant_total_count()
+  {
+    $this->db->where('status', 4);
+    $num_rows = $this->db->count_all_results('participants');
     return $num_rows;
   }
 
@@ -60,101 +73,91 @@ class Participant_model extends CI_Model
 
     return $this->db->query($query)->result_array();
   }
-  // public function hapusPeserta($id)
-  // {
-  //   //$this->db->delete('participants', 'participants_detail', 'payments', 'regist_info_detail' ['id_participant' => $id]);
-  //
-  //   $this->db->delete('participant_details', ['id_participant' => $id]);
-  //   $this->db->delete('payments', ['id_participant' => $id]);
-  //   $this->db->delete('regist_info_detail', ['id_participant' => $id]);
-  //   $this->db->delete('participants', ['id_participant' => $id]);
-  //   return $this->db->affected_rows();
-  // }
 
   public function addParticipant($data1, $data2)
   {
-      $data1 = [
-        "id_participant" => $this->input->post('id', true),
-        "id_summit" => $this->input->post('summit', true),
-        "email" => $this->input->post('email', true)
-      ];
-      $data2 = [
-          "photo" => $this->input->post('photo', true),
-          "full_name" => $this->input->post('fullname', true),
-          "birthdate" => $this->input->post('birthdate', true),
-          "gender" => $this->input->post('gender', true),
-          "id_participant" => $this->input->post('id', true),
-          "address" => $this->input->post('address', true),
-          "nationality" => $this->input->post('nationality', true),
-          "occupation" => $this->input->post('occupation', true),
-          "field_of_study" => $this->input->post('field', true),
-          "institution" => $this->input->post('institution', true),
-          "emergency_contact" => $this->input->post('emergency', true),
-          "wa_number" => $this->input->post('wa', true),
-          "ig_account" => $this->input->post('ig', true),
-          "tshirt_size" => $this->input->post('tshirt', true),
-          "disease_history" => $this->input->post('disease', true),
-          "contact_relation" => $this->input->post('relation', true),
-          "is_vegetarian" => $this->input->post('vegetarian', true),
-          "subtheme" => $this->input->post('subtheme', true),
-          "essay" => $this->input->post('essay', true),
-          "social_projects" => $this->input->post('social', true),
-          "talents" => $this->input->post('talents', true),
-          "achievements" => $this->input->post('achievements', true),
-          "experiences" => $this->input->post('experiences', true),
-          "know_program_from" => $this->input->post('know', true),
-          "source_account_name" => $this->input->post('source', true),
-          "video_link" => $this->input->post('videolink', true),
-          "id_participant_detail" => $this->input->post('id_detail', true)
-      ];
-      $this->db->insert('participants', $data1);
-      $this->db->insert('participant_details', $data2);
-      return $this->db->affected_rows();
-    }
+    $data1 = [
+      "id_participant" => $this->input->post('id', true),
+      "id_summit" => $this->input->post('summit', true),
+      "email" => $this->input->post('email', true)
+    ];
+    $data2 = [
+      "photo" => $this->input->post('photo', true),
+      "full_name" => $this->input->post('fullname', true),
+      "birthdate" => $this->input->post('birthdate', true),
+      "gender" => $this->input->post('gender', true),
+      "id_participant" => $this->input->post('id', true),
+      "address" => $this->input->post('address', true),
+      "nationality" => $this->input->post('nationality', true),
+      "occupation" => $this->input->post('occupation', true),
+      "field_of_study" => $this->input->post('field', true),
+      "institution" => $this->input->post('institution', true),
+      "emergency_contact" => $this->input->post('emergency', true),
+      "wa_number" => $this->input->post('wa', true),
+      "ig_account" => $this->input->post('ig', true),
+      "tshirt_size" => $this->input->post('tshirt', true),
+      "disease_history" => $this->input->post('disease', true),
+      "contact_relation" => $this->input->post('relation', true),
+      "is_vegetarian" => $this->input->post('vegetarian', true),
+      "subtheme" => $this->input->post('subtheme', true),
+      "essay" => $this->input->post('essay', true),
+      "social_projects" => $this->input->post('social', true),
+      "talents" => $this->input->post('talents', true),
+      "achievements" => $this->input->post('achievements', true),
+      "experiences" => $this->input->post('experiences', true),
+      "know_program_from" => $this->input->post('know', true),
+      "source_account_name" => $this->input->post('source', true),
+      "video_link" => $this->input->post('videolink', true),
+      "id_participant_detail" => $this->input->post('id_detail', true)
+    ];
+    $this->db->insert('participants', $data1);
+    $this->db->insert('participant_details', $data2);
+    return $this->db->affected_rows();
+  }
 
   public function editParticipant($id)
   {
-      $data = [
-          "photo" => $this->input->post('photo', true),
-          "full_name" => $this->input->post('fullname', true),
-          "birthdate" => $this->input->post('birthdate', true),
-          "gender" => $this->input->post('gender', true),
-          "id_participant" => $this->input->post('id', true),
-          "address" => $this->input->post('address', true),
-          "nationality" => $this->input->post('nationality', true),
-          "occupation" => $this->input->post('occupation', true),
-          "field_of_study" => $this->input->post('field', true),
-          "institution" => $this->input->post('institution', true),
-          "emergency_contact" => $this->input->post('emergency', true),
-          "wa_number" => $this->input->post('war', true),
-          "ig_account" => $this->input->post('ig', true),
-          "tshirt_size" => $this->input->post('tshirt', true),
-          "disease_history" => $this->input->post('disease', true),
-          "contact_relation" => $this->input->post('relation', true),
-          "is_vegetarian" => $this->input->post('vegetarian', true),
-          "subtheme" => $this->input->post('subtheme', true),
-          "essay" => $this->input->post('essay', true),
-          "social_projects" => $this->input->post('social', true),
-          "talents" => $this->input->post('talents', true),
-          "achievements" => $this->input->post('achievements', true),
-          "experiences" => $this->input->post('experiences', true),
-          "know_program_from" => $this->input->post('know', true),
-          "source_account_name" => $this->input->post('source', true),
-          "video_link" => $this->input->post('videolink', true),
-          "id_participant_detail" => $this->input->post('id_detail', true)
+    $data = [
+      "photo" => $this->input->post('photo', true),
+      "full_name" => $this->input->post('fullname', true),
+      "birthdate" => $this->input->post('birthdate', true),
+      "gender" => $this->input->post('gender', true),
+      "id_participant" => $this->input->post('id', true),
+      "address" => $this->input->post('address', true),
+      "nationality" => $this->input->post('nationality', true),
+      "occupation" => $this->input->post('occupation', true),
+      "field_of_study" => $this->input->post('field', true),
+      "institution" => $this->input->post('institution', true),
+      "emergency_contact" => $this->input->post('emergency', true),
+      "wa_number" => $this->input->post('war', true),
+      "ig_account" => $this->input->post('ig', true),
+      "tshirt_size" => $this->input->post('tshirt', true),
+      "disease_history" => $this->input->post('disease', true),
+      "contact_relation" => $this->input->post('relation', true),
+      "is_vegetarian" => $this->input->post('vegetarian', true),
+      "subtheme" => $this->input->post('subtheme', true),
+      "essay" => $this->input->post('essay', true),
+      "social_projects" => $this->input->post('social', true),
+      "talents" => $this->input->post('talents', true),
+      "achievements" => $this->input->post('achievements', true),
+      "experiences" => $this->input->post('experiences', true),
+      "know_program_from" => $this->input->post('know', true),
+      "source_account_name" => $this->input->post('source', true),
+      "video_link" => $this->input->post('videolink', true),
+      "id_participant_detail" => $this->input->post('id_detail', true)
 
-      ];
+    ];
 
-      $this->db->update('participant_details', $data, ['id_participant' => $id]);
-      return $this->db->affected_rows();
-    }
+    $this->db->update('participant_details', $data, ['id_participant' => $id]);
+    return $this->db->affected_rows();
+  }
 
-    public function getSummit()
-    {
-      // code...
-      $query = "SELECT `id_summit`,`description` FROM `summits`";
-      return $this->db->query($query)->result_array();
-    }
+  public function getSummit()
+  {
+    // code...
+    $query = "SELECT `id_summit`,`description` FROM `summits`";
+    return $this->db->query($query)->result_array();
+  }
 
   public function get_fullParticipants()
   {
@@ -190,7 +193,7 @@ class Participant_model extends CI_Model
     // $data = [
     //     "is_fully_funded" => $this->input->post('1', true)
     //   ];
-    $this->db->update('participants', ['is_fully_funded' =>1], ['id_participant' => $id]);
+    $this->db->update('participants', ['is_fully_funded' => 1], ['id_participant' => $id]);
     return $this->db->affected_rows();
   }
 }

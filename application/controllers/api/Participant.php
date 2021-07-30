@@ -51,10 +51,10 @@ class Participant extends RestController
     $id = $this->get('id_participant');
     if ($id === NULL) {
       // code...
-      $participant = $this->participant->get_participant();
+      $participant = $this->participant->get_participant_detail();
     } else {
       // code...
-      $participant = $this->participant->get_participant($id);
+      $participant = $this->participant->get_participant_detail($id);
     }
 
     if ($participant) {
@@ -92,7 +92,7 @@ class Participant extends RestController
     ];
 
     $res = $this->participant->register($data);
-    $participant = $this->participant->get_participant($id);
+    $participant = $this->participant->get_participant_detail($id);
 
     if ($res > 0) {
       // code...

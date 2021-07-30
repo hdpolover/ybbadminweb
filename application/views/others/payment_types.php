@@ -1,7 +1,5 @@
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <a href="<?= base_url(); ?>others/add_new_payment_type" class="btn btn-primary mb-4">Add New Payment Type</a>
 
     <?php echo $this->session->flashdata('message'); ?>
@@ -13,12 +11,36 @@
         </div>
 
         <div class="card-body">
+            <div class="row" style="padding-bottom: 20px; padding-left: 20px;">
+                <div class="filter-group">
+
+                    <?php
+                    $conn = new mysqli('localhost', 'root', '', 'ybbadmin_db')
+                        or die('Cannot connect to db');
+
+                    $result = $conn->query("SELECT id_summit, description from summits");
+                    echo "<select class='form-control' name='summit' id='myInput' onclick='myFunction()'>";
+                    echo '<option value="" selected="selected">All Summits</option>';
+                    while ($row = $result->fetch_assoc()) {
+
+                        unset($id, $name);
+                        $id = $row['id_summit'];
+                        $name = $row['description'];
+                        echo '<option value="' . $name . '">' . $name . '</option>';
+                    }
+                    echo "</select>"; ?>
+
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th hidden>Summit</th>
                             <th>Payment Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -28,9 +50,12 @@
                         <?php foreach ($payment_types as $pt) : ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $pt['description']; ?></td>
+                                <td hidden><?= $pt['description']; ?></td>
+                                <td><?= $pt['pt_desc']; ?></td>
+                                <td><?= $pt['start_date']; ?></td>
+                                <td><?= $pt['end_date']; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>others/payment_types_detail/<?= $pt['id_payment_type']; ?>" class="badge badge-info">Edit</a>
+                                    <a href="<?= base_url(); ?>others/edit_payment_type/<?= $pt['id_payment_type']; ?>" class="btn btn-danger">Edit</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -58,5 +83,27 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
+<script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dataTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
+  }
+</script>
+
 
 <!-- End of Main Content -->

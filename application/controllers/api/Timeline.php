@@ -19,7 +19,7 @@ class Timeline extends RestController
     $id = $this->get('id_summit_timeline');
     if ($id === NULL) {
       // code...
-      $timeline = $this->timeline->get_all();
+      $timeline = $this->timeline->get_timeline();
     } else {
       // code...
       $timeline = $this->timeline->get_by_id($id);
