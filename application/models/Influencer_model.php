@@ -8,7 +8,7 @@ class Influencer_model extends CI_Model
     public function get_influencer($id = null)
     {
         if ($id == null) {
-            $query = "select influencers.referral_code, influencers.full_name, count(participant_details.referral_code) AS referral_count from influencers left join participant_details on participant_details.referral_code = influencers.referral_code where influencers.referral_code not like '-' GROUP by influencers.referral_code";
+            $query = "select influencers.referral_code, influencers.full_name, influencers.status, count(participant_details.referral_code) AS referral_count from influencers left join participant_details on participant_details.referral_code = influencers.referral_code where influencers.referral_code not like '-' GROUP by influencers.referral_code";
             return $this->db->query($query)->result_array();
         } else {
             $query = "select influencers.referral_code, influencers.full_name AS inf_name, influencers.*, count(participant_details.referral_code) AS referral_count from influencers inner join participant_details on participant_details.referral_code = influencers.referral_code where influencers.referral_code = '" . $id . "'";

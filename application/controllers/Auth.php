@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
@@ -38,23 +38,23 @@ class Auth extends CI_Controller
 
     if ($admin) {
       // user aktif...
-        // cek password...
-        if ($password == $admin['password']) {
-          // code...
-          $data = [
-            'username' => $admin['username'],
-            'id_admin'=> $admin['id_admin'],
-            'id_summit'=> $admin['id_summit'],
-          ];
-          $this->session->set_userdata($data);
-          redirect('dashboard');
-        }else {
-          // code...
-          $this->session->set_flashdata('message', '<div class = "alert alert-danger" role
+      // cek password...
+      if ($password == $admin['password']) {
+        // code...
+        $data = [
+          'username' => $admin['username'],
+          'id_admin' => $admin['id_admin'],
+          'id_summit' => $admin['id_summit'],
+        ];
+        $this->session->set_userdata($data);
+        redirect('dashboard');
+      } else {
+        // code...
+        $this->session->set_flashdata('message', '<div class = "alert alert-danger" role
           = "alert"> Wrong Password!</div>');
-          redirect('auth');
-        }
-    }else {
+        redirect('auth');
+      }
+    } else {
       // code...
       $this->session->set_flashdata('message', '<div class = "alert alert-danger" role
       = "alert"> Admin not found!</div>');
@@ -70,13 +70,5 @@ class Auth extends CI_Controller
     $this->session->set_flashdata('message', '<div class = "alert alert-success" role
     = "alert"> You have been Logout!</div>');
     redirect('auth');
-  }
-
-  public function register{
-         $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('participant/index', $data);
-        $this->load->view('templates/footer');
   }
 }
