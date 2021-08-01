@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>form-v1 by Colorlib</title>
+	<title>Registration</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -29,18 +29,12 @@
 									<p>Please enter your infomation and proceed to the next step so we can build your accounts.  </p>
 								</div>
 								<div class="form-row">
-									<div class="form-holder">
+									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>First Name</legend>
-											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name" required>
+											<legend>Participant Name</legend>
+											<input type="text" class="form-control" id="first-name" name="fullname" placeholder="Enter your name" id="fullname" required>
 										</fieldset>
-									</div>
-									<div class="form-holder">
-										<fieldset>
-											<legend>Last Name</legend>
-											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name" required>
-										</fieldset>
-									</div>
+									</div>	
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
@@ -52,42 +46,143 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
+										<legend>Gender</legend>
+											<select name="gender" id="gender">
+												<option value="female">Female</option>
+												<option value="male">Male</option>
+											</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Phone Number</legend>
-											<input type="text" class="form-control" id="phone" name="phone" placeholder="+1 888-999-7777" required>
+											<input type="text" class="form-control" id="phone" name="phone" placeholder="+62 812 18463506" required>
 										</fieldset>
 									</div>
 								</div>
-								<div class="form-row form-row-date">
+								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<label class="special-label">Birth Date:</label>
-										<select name="month" id="month">
-											<option value="MM" disabled selected>MM</option>
-											<option value="16">16</option>
-											<option value="17">17</option>
-											<option value="18">18</option>
-											<option value="19">19</option>
-										</select>
-										<select name="date" id="date">
-											<option value="DD" disabled selected>DD</option>
-											<option value="Feb">Feb</option>
-											<option value="Mar">Mar</option>
-											<option value="Apr">Apr</option>
-											<option value="May">May</option>
-										</select>
-										<select name="year" id="year">
-											<option value="YYYY" disabled selected>YYYY</option>
-											<option value="2017">2017</option>
-											<option value="2016">2016</option>
-											<option value="2015">2015</option>
-											<option value="2014">2014</option>
-											<option value="2013">2013</option>
+										<fieldset>
+											<legend>Birth Date</legend>
+											<div class="form-row">
+												<input type="date" name="birthdate" class="form-control" id="birthdate" style="color: black;" required>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Address</legend>
+											<input type="text" class="form-control" id="address" name="address" style="height:100px" placeholder="Enter your complete address" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Birth Date</legend>
+											<div class="form-row">
+												<input type="date" name="birthdate" class="form-control" id="birthdate" style="color: black;" required>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="special-label">Nationality</label>
+										<select style="color: black;" name="nationality" class="form-control" id="nationality">
+											<?php foreach ($countries as $s) : ?>
+												<option value="<?php echo $s['name'] . ' (' . $s['sortname'] . ')';; ?>"><?php echo $s['name'] . ' (' . $s['sortname'] . ')'; ?>  </option>
+
+											<?php endforeach ?>			
 										</select>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<input type="text" class="form-control input-border" id="ssn" name="ssn" placeholder="SSN" required>
+										<fieldset>
+											<legend>Occupation</legend>
+											<input type="text" class="form-control" id="occupation" name="occupation" placeholder="Ex: Student" required>
+										</fieldset>
+									</div>	
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Field of Study</legend>
+											<input type="text" class="form-control" id="field" name="field" placeholder="Ex: Informatics Engineering" required>
+										</fieldset>
+									</div>	
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Institution</legend>
+											<input type="text" class="form-control" id="institution" name="institution" placeholder="Ex: Universitas Islam Negeri Sunan Gunung Djati Bandung" required>
+										</fieldset>
+									</div>	
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Emergency Contact</legend>
+											<input type="text" class="form-control" id="emergency" name="emergency" placeholder="+62 812 18463506" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Whatsapp</legend>
+											<input type="text" class="form-control" id="wa" name="wa" placeholder="+62 812 18463506" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Instagram Account</legend>
+											<input type="text" class="form-control" id="ig" name="ig" placeholder="Enter Your Instagram Account" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<legend>T-Shirt</legend>		
+											<select name="tshirt" id="tshirt">
+												<option value="s">S</option>
+												<option value="m">M</option>
+												<option value="l">L</option>
+												<option value="xl">XL</option>
+												<option value="xxl">XXL</option>
+											</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Disease History</legend>
+											<input type="text" class="form-control" id="disease" name="disease" placeholder="Enter '-' if you any disease history" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Contact Relation</legend>
+											<input type="text" class="form-control" id="relation" name="relation" placeholder="Exp: Father/Sibligs" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<legend>Vegetarian</legend>		
+											<select name="tshirt" id="tshirt">
+												<option value="1">Yes</option>
+												<option value="0">No</option>
+											</select>
 									</div>
 								</div>
 							</div>
@@ -95,96 +190,145 @@
 						<!-- SECTION 2 -->
 			            <h2>
 			            	<p class="step-icon"><span>02</span></p>
-			            	<span class="step-text">Connect Bank Account</span>
+			            	<span class="step-text">Other Information</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Connect Bank Account</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
+									<h3 class="heading">Other Informations</h3>
+									<p>Please complete these information </p>
 								</div>
 								<div class="form-row">
-									<div class="form-holder form-holder-1">
-										<input type="text" name="find_bank" id="find_bank" placeholder="Find Your Bank" class="form-control" required>
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Experiences</legend>
+											<input type="text" class="form-control" id="experiences" name="experiences" style="height:100px" placeholder="Enter your experience" required>
+										</fieldset>
 									</div>
 								</div>
-								<div class="form-row-total">
-									<div class="form-row">
-				                		<div class="form-holder form-holder-2 form-holder-3">
-				                			<input type="radio" class="radio" name="bank-1" id="bank-1" value="bank-1" checked>
-				                			<label class="bank-images label-above bank-1-label" for="bank-1">
-				                				<img src="<?=base_url()?>assets/images/form-v1-1.png" alt="bank-1">
-				                			</label>
-											<input type="radio" class="radio" name="bank-2" id="bank-2" value="bank-2">
-											<label class="bank-images label-above bank-2-label" for="bank-2">
-												<img src="<?=base_url()?>assets/images/form-v1-2.png" alt="bank-2">
-											</label>
-											<input type="radio" class="radio" name="bank-3" id="bank-3" value="bank-3">
-											<label class="bank-images label-above bank-3-label" for="bank-3">
-												<img src="<?=base_url()?>assets/images/form-v1-3.png" alt="bank-3">
-											</label>
-				                		</div>
-				                	</div>
-				                	<div class="form-row">
-				                		<div class="form-holder form-holder-2 form-holder-3">
-				                			<input type="radio" class="radio" name="bank-4" id="bank-4" value="bank-4">
-				                			<label class="bank-images bank-4-label" for="bank-4">
-				                				<img src="<?=base_url()?>assets/images/form-v1-4.png" alt="bank-4">
-				                			</label>
-											<input type="radio" class="radio" name="bank-5" id="bank-5" value="bank-5">
-											<label class="bank-images bank-5-label" for="bank-5">
-												<img src="<?=base_url()?>assets/images/form-v1-5.png" alt="bank-5">
-											</label>
-											<input type="radio" class="radio" name="bank-6" id="bank-6" value="bank-6">
-											<label class="bank-images bank-6-label" for="bank-6">
-												<img src="<?=base_url()?>assets/images/form-v1-6.png" alt="bank-6">
-											</label>
-				                		</div>
-				                	</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Achievements</legend>
+											<input type="text" class="form-control" id="achievements" name="achievements" style="height:100px" placeholder="Enter your achievements" required>
+										</fieldset>
+									</div>
 								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Social Projects</legend>
+											<input type="text" class="form-control" id="social" name="social" style="height:100px" placeholder="Enter your complete address" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Talents</legend>
+											<input type="text" class="form-control" id="talents" name="talents" style="height:100px" placeholder="Enter your complete address" required>
+										</fieldset>
+									</div>
+								</div>			
 							</div>
 			            </section>
 			            <!-- SECTION 3 -->
 			            <h2>
 			            	<p class="step-icon"><span>03</span></p>
-			            	<span class="step-text">Set Financial Goals</span>
+			            	<span class="step-text">Essay</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Set Financial Goals</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
+									<h3 class="heading">Essay</h3>
+									<p>Your essay length must be between 200 to 300 words. It is recommended that you write your essay on other platforms and paste it here</p>
 								</div>
 								<div class="form-row">
-			                		<div class="form-holder form-holder-2">
-			                			<input type="radio" class="radio" name="radio1" id="plan-1" value="plan-1">
-			                			<label class="plan-icon plan-1-label" for="plan-1">
-		                					<img src="<?=base_url()?>assets/images/form-v1-icon-2.png" alt="pay-1">
-			                			</label>
-			                			<div class="plan-total">
-		                					<span class="plan-title">Specific Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-			                			<input type="radio" class="radio" name="radio1" id="plan-2" value="plan-2">
-			                			<label class="plan-icon plan-2-label" for="plan-2">
-			                					<img src="<?=base_url()?>assets/images/form-v1-icon-2.png" alt="pay-1">
-			                			</label>
-			                			<div class="plan-total">
-		                					<span class="plan-title">Medium Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-										<input type="radio" class="radio" name="radio1" id="plan-3" value="plan-3" checked>
-										<label class="plan-icon plan-3-label" for="plan-3">
-		                					<img src="<?=base_url()?>assets/images/form-v1-icon-3.png" alt="pay-2">
-										</label>
-										<div class="plan-total">
-		                					<span class="plan-title">Special Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-			                		</div>
-			                	</div>
+									<div class="form-holder form-holder-2">
+										<legend>Sub Theme</legend>		
+											<select name="subtheme" id="subtheme">
+												<option value="mentalhealth">Mental Health</option>
+												<option value="eduaction">Education</option>
+												<option value="publicpolicy">Public Policy</option>
+												<option value="Public Health">Public Health</option>
+												<option value="economy">Economy</option>
+											</select>
+										</div>
+									</div>	
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Essay</legend>
+												<input type="text" class="form-control" id="essay" name="essay" style="height:300px" placeholder="Enter your complete address" required>
+											</fieldset>
+									</div>	
+								</div>
 							</div>
 			            </section>
+						<!-- SECTION 4 -->
+			            <h2>
+			            	<p class="step-icon"><span>04</span></p>
+			            	<span class="step-text">Program Information</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="wizard-header">
+									<h3 class="heading">Program Informations</h3>
+									<p></p>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<legend>How do you know about this programs</legend>		
+											<select name="subtheme" id="subtheme">
+												<option value="instagram">Instagram</option>
+												<option value="whatsapp">Whatsapp</option>
+												<option value="facebook">Facebook</option>
+												<option value="friends">Friends</option>
+												<option value="others">Others</option>
+											</select>
+										</div>
+									</div>	
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Source Account/Name</legend>
+												<input type="text" class="form-control" id="source" name="source" placeholder="Enter Source Account" required>
+											</fieldset>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Reedem</legend>
+												<input type="text" class="form-control" id="redeem" name="reedem" placeholder="Enter Your Reedem Code" required>
+											</fieldset>
+										</div>
+									</div>
+									<p>Note: Paste the link to your motivation video about why you want to participate in the 5th Istanbul Youth Summit.The video can uploaded to Instagram or Youtube</p>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Motivation Video Link</legend>
+												<input type="text" class="form-control" id="videolink" name="source" placeholder="Enter Your Link Here" required>
+											</fieldset>
+										</div>
+									</div>
+									<p> Note: As mentioned on the Registration Guidelines, you need to do the followings:</p>
+									<p>	- Follow Istanbul Youth Summit and Youth Break the Boundaries on Instagram,</p>
+									<p> - Tag 5 of your friends on your Instagram post</p>
+									<p> - Share the event to 3 Whatsapp Groups</p>
+									<p>Take a screenshot of each of the actions above and upload them to your Google drive. Copy the link and paste it the input form below. (Make sure the folder is accessible by public)</p>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Share Requirement Proof Link</legend>
+												<input type="text" class="form-control" id="prooflink" name="prooflink" placeholder="Enter Your Link Here" required>
+											</fieldset>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</section>
 		        	</div>
 		        </form>
 			</div>

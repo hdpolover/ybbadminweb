@@ -6,10 +6,12 @@ class Registration extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Country_model', 'country');
     }
 
     public function index()
     {
-        $this->load->view('auth/registration');
+        $data['countries'] = $this->country->get_countries();
+        $this->load->view('auth/registration',$data);
     }
 }
