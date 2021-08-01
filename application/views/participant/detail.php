@@ -91,7 +91,7 @@
                     <p class="card-text" style="color: black; font-weight: bold;">Whatsapp Number</p>
                   </div>
                   <div class="col">
-                    <a href="https://api.whatsapp.com/send?phone=" . <?= $p['wa_number']; ?> target="_blank"><?= $p['wa_number']; ?></a>
+                    <a href="https://api.whatsapp.com/send?phone=<?= $p['wa_number']; ?>"   target="_blank"><?= $p['wa_number']; ?></a>
                   </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
@@ -99,7 +99,7 @@
                     <p class="card-text" style="color: black; font-weight: bold;">Emergency Contact</p>
                   </div>
                   <div class="col">
-                    <a href="https://api.whatsapp.com/send?phone=" . <?= $p['emergency_contact']; ?> target="_blank"><?= $p['emergency_contact']; ?></a>
+                    <a href="https://api.whatsapp.com/send?phone=<?= $p['emergency_contact']; ?>"  target="_blank"><?= $p['emergency_contact']; ?></a>
                   </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">
@@ -149,7 +149,7 @@
                     <p class="card-text" style="color: black; font-weight: bold;">Instagram</p>
                   </div>
                   <div class="col">
-                    <a href="https://instagram.com/" . <?= $p['ig_account']; ?> target="_blank">@<?= $p['ig_account']; ?></a>
+                    <a href="https://instagram.com/<?= $p['ig_account']; ?>"  target="_blank">@<?= $p['ig_account']; ?></a>
                   </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px;">

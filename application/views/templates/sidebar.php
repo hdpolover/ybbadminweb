@@ -85,6 +85,15 @@
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
+  <li <?= $this->uri->segment(1) == 'influencer' ? 'class="nav-item active"' : 'class="nav-item"'; ?>>
+    <a class="nav-link collapsed" href="<?= base_url('influencer'); ?>">
+      <i class="fas fa-users fa-cog"></i>
+      <span>Influencers</span>
+    </a>
+
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
   <li <?= $this->uri->segment(1) == 'admin' ? 'class="nav-item active"' : 'class="nav-item"'; ?>>
     <a class="nav-link collapsed" href="<?= base_url('admin'); ?>">
       <i class="fas fa-users fa-cog"></i>

@@ -5,6 +5,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class Chart_model extends CI_Model
 {
+    public function get_participant_total_count()
+    {
+        $num_rows = $this->db->count_all_results('participant_details');
+        return $num_rows;
+    }
+
+    public function get_valid_participant_total_count()
+    {
+        $this->db->where('status', 2);
+        $num_rows = $this->db->count_all_results('participants');
+        return $num_rows;
+    }
+
+    public function get_fixed_participant_total_count()
+    {
+        $this->db->where('status', 4);
+        $num_rows = $this->db->count_all_results('participants');
+        return $num_rows;
+    }
+
+    public function get_pending_payment_total_count()
+    {
+        $this->db->where('payment_status', 0);
+        $num_rows = $this->db->count_all_results('payments');
+        return $num_rows;
+    }
+
+
     public function get_gender()
     {
         $query = "SELECT gender, COUNT(gender) AS `jumlah` FROM participant_details GROUP BY gender";

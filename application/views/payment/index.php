@@ -12,7 +12,7 @@
     </div>
 
     <div class="card-body">
-      <div class="row" style="padding-bottom: 20px; padding-left: 20px;">
+      <div class="row" style="padding-bottom: 20px;">
         <div class="col-4">
           <div class="filter-group">
             <?php
@@ -56,6 +56,41 @@
           </div>
 
         </div>
+        <div class="col">
+          <div class="filter-group">
+            <?php
+            $conn = new mysqli('localhost', 'root', '', 'ybbadmin_db')
+              or die('Cannot connect to db');
+
+            $result = $conn->query("SELECT id_payment, payment_status from payments group by payment_status");
+            echo "<select class='form-control' name='status' id='myInput3' onclick='myFunction3()'>";
+            echo '<option value="" selected="selected">All Payment statuses</option>';
+            while ($row = $result->fetch_assoc()) {
+
+              switch ($row['payment_status']) {
+                case '0':
+                  unset($id, $name);
+                  $id = $row['id_payment'];
+                  $name = "Pending";
+                  echo '<option value="' . $name . '">' . $name . '</option>';
+                  break;
+                case '1':
+                  unset($id, $name);
+                  $id = $row['id_payment'];
+                  $name = "Valid";
+                  echo '<option value="' . $name . '">' . $name . '</option>';
+                  break;
+                case '2':
+                  unset($id, $name);
+                  $id = $row['id_payment'];
+                  $name = "Invalid";
+                  echo '<option value="' . $name . '">' . $name . '</option>';
+                  break;
+              }
+            }
+            echo "</select>"; ?>
+          </div>
+        </div>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -66,7 +101,7 @@
               <th>Participant Name</th>
               <th hidden>Summit</th>
               <th hidden>Payment Type</th>
-              <th>Status</th>
+              <th hidden>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -80,7 +115,7 @@
                 <td><?= $p['full_name']; ?></td>
                 <td hidden><?= $p['summit']; ?></td>
                 <td hidden><?= $p['payment_type']; ?></td>
-                <td>
+                <td hidden>
                   <?php switch ($p['payment_status']) {
                     case 0:
                       echo 'Pending';
@@ -144,6 +179,25 @@
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[3];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function myFunction3() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dataTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[4];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {

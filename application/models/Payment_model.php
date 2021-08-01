@@ -31,7 +31,8 @@ class Payment_model extends CI_Model
     }
   }
 
-  public function get_payment_details($id_participant, $id_payment_type) {
+  public function get_payment_details($id_participant, $id_payment_type)
+  {
     $query = "SELECT pay.*, pd.full_name, a.username AS `admin`, s.description AS `summit`, pt.description AS `payment_type`
     from payments pay
     INNER join participants par on pay.id_participant = par.id_participant
@@ -39,17 +40,10 @@ class Payment_model extends CI_Model
     inner join admins a on a.id_admin = pay.id_admin
     inner join payment_types pt on pt.id_payment_type = pay.id_payment_type
     inner join summits s on s.id_summit = par.id_summit
-    where pay.id_participant = '" . $id_participant ."'"
-     . " AND pay.id_payment_type = " . $id_payment_type . "";
+    where pay.id_participant = '" . $id_participant . "'"
+      . " AND pay.id_payment_type = " . $id_payment_type . "";
 
     return $this->db->query($query)->result_array();
-  }
-
-  public function get_pending_payment_total_count()
-  {
-    $this->db->where('payment_status', 0);
-    $num_rows = $this->db->count_all_results('payments');
-    return $num_rows;
   }
 
   public function add_payment($data)

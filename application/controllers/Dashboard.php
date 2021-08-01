@@ -19,10 +19,10 @@ class Dashboard extends CI_Controller
     // code...
     $data['title'] = 'Dashboard';
     $data['current_admin'] = $this->db->get_where('admins', ['username' => $this->session->userdata('username')])->row_array();
-    $data['participant_total'] = $this->participant->get_participant_total_count();
-    $data['fixed_participant_total'] = $this->participant->get_fixed_participant_total_count();
-    $data['valid_participant_total'] = $this->participant->get_valid_participant_total_count();
-    $data['pending_payment_total'] = $this->payment->get_pending_payment_total_count();
+    $data['participant_total'] = $this->chart->get_participant_total_count();
+    $data['fixed_participant_total'] = $this->chart->get_fixed_participant_total_count();
+    $data['valid_participant_total'] = $this->chart->get_valid_participant_total_count();
+    $data['pending_payment_total'] = $this->chart->get_pending_payment_total_count();
     $data['gender'] = $this->chart->get_gender();
     $data['nationality'] = $this->chart->get_nationality();
     $data['subtheme'] = $this->chart->get_subtheme();
