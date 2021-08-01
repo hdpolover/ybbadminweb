@@ -71,4 +71,12 @@ class Auth extends CI_Controller
     = "alert"> You have been Logout!</div>');
     redirect('auth');
   }
+
+  public function register{
+         $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('participant/index', $data);
+        $this->load->view('templates/footer');
+  }
 }
