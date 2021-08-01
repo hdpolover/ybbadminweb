@@ -109,9 +109,11 @@ class Influencer extends CI_Controller
         );
 
         $this->influencer->save_edit($data);
-
-        $this->session->set_flashdata('message', '<div class ="alert alert-success" style="text-align-center" role ="alert">Updated <?= $full_name; ?>!</div>');
+      
+        $this->session->set_flashdata('message', '<div class ="alert alert-success" style="text-align-center" role ="alert">Updated influencer!</div>');
         redirect('influencer/index');
+
+        
     }
 }
 

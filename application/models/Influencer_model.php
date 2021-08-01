@@ -36,7 +36,7 @@ class Influencer_model extends CI_Model
         $this->db->set('status', $data['status']);
         $this->db->set('instagram', $data['instagram']);
         $this->db->set('field_of_study', $data['field_of_study']);
-        $this->db->where('referral_code', "'".$data['referral_code']."'");
-        return $this->db->update('influencers');
+        $this->db->where('referral_code', $data['referral_code']);
+        $this->db->update('influencers');
     }
 }

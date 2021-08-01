@@ -7,40 +7,35 @@
         </div>
         <div class="card-body">
             <form method="post" action="<?= base_url('influencer/save_edit'); ?>">
-                <div class="form-group row">
-                    <label for="referral_code" class="col-sm-4 col-form-label">Referral Code</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="referral_code" class="form-control" id="referral_code" disabled value="<?= $influencer[0]['referral_code'];?>" >
-                    </div>
-                </div>
+                <input type="text" hidden name="referral_code" class="form-control" id="referral_code" value="<?= $influencer[0]['referral_code']; ?>">
                 <div class="form-group row">
                     <label for="full_name" class="col-sm-4 col-form-label">Full Name</label>
                     <div class="col-sm-8">
-                        <input type="text" name="full_name" class="form-control" id="full_name" value="<?= $influencer[0]['full_name'];?>">
+                        <input type="text" name="full_name" class="form-control" id="full_name" value="<?= $influencer[0]['full_name']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="institution" class="col-sm-4 col-form-label">Institution</label>
                     <div class="col-sm-8">
-                        <input type="text" name="institution" class="form-control" id="institution" value="<?= $influencer[0]['institution'];?>">
+                        <input type="text" name="institution" class="form-control" id="institution" value="<?= $influencer[0]['institution']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="field_of_study" class="col-sm-4 col-form-label">Field of Study</label>
                     <div class="col-sm-8">
-                        <input type="text" name="field_of_study" class="form-control" id="field_of_study" value="<?= $influencer[0]['field_of_study'];?>">
+                        <input type="text" name="field_of_study" class="form-control" id="field_of_study" value="<?= $influencer[0]['field_of_study']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="tiktok" class="col-sm-4 col-form-label">Tiktok Account</label>
                     <div class="col-sm-8">
-                        <input type="text" name="tiktok" class="form-control" id="tiktok" value="<?= $influencer[0]['tiktok'];?>">
+                        <input type="text" name="tiktok" class="form-control" id="tiktok" value="<?= $influencer[0]['tiktok']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="instagram" class="col-sm-4 col-form-label">Instagram Account</label>
                     <div class="col-sm-8">
-                        <input type="text" name="instagram" class="form-control" id="instagram" value="<?= $influencer[0]['instagram'];?>">
+                        <input type="text" name="instagram" class="form-control" id="instagram" value="<?= $influencer[0]['instagram']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
