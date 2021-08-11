@@ -94,6 +94,24 @@
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
+  <li <?= $this->uri->segment(1) == 'report' ? 'class="nav-item active"' : 'class="nav-item"'; ?>>
+    <a class="nav-link collapsed" href="<?= base_url('report'); ?>">
+      <i class="fas fa-users fa-cog"></i>
+      <span>Reports</span>
+    </a>
+
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li <?= $this->uri->segment(1) == 'document_center' ? 'class="nav-item active"' : 'class="nav-item"'; ?>>
+    <a class="nav-link collapsed" href="<?= base_url('document_center'); ?>">
+      <i class="fas fa-users fa-cog"></i>
+      <span>Document Center</span>
+    </a>
+
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
   <li <?= $this->uri->segment(1) == 'admin' ? 'class="nav-item active"' : 'class="nav-item"'; ?>>
     <a class="nav-link collapsed" href="<?= base_url('admin'); ?>">
       <i class="fas fa-users fa-cog"></i>
