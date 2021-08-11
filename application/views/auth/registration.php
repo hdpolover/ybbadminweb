@@ -15,7 +15,8 @@
 	<div class="page-content">
 		<div class="form-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" action="#" method="post">
+		        <form class="form-register" action="<?= base_url('registration/save_new_participants'); ?>"> method="post" enctype="multipart/form-data">
+				
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -31,6 +32,24 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<fieldset>
+											<legend>Photo</legend>
+											<form action="/action_page.php">
+												<input name="image" id="image" style="color: black;" type="file">
+											</form>
+										</fieldset>
+									</div>	
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>ID Participant</legend>
+											<input type="text" class="form-control" id="id" name="id" placeholder="Enter your name" id="fullname" required>
+										</fieldset>
+									</div>	
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
 											<legend>Participant Name</legend>
 											<input type="text" class="form-control" id="first-name" name="fullname" placeholder="Enter your name" id="fullname" required>
 										</fieldset>
@@ -40,7 +59,7 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Your Email</legend>
-											<input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required>
+											<input type="text" name="email" id="email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required>
 										</fieldset>
 									</div>
 								</div>
@@ -179,7 +198,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<legend>Vegetarian</legend>		
-											<select name="tshirt" id="tshirt">
+											<select name="vegetarian" id="vegetarian">
 												<option value="1">Yes</option>
 												<option value="0">No</option>
 											</select>
@@ -279,7 +298,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<legend>How do you know about this programs</legend>		
-											<select name="subtheme" id="subtheme">
+											<select name="know" id="know">
 												<option value="instagram">Instagram</option>
 												<option value="whatsapp">Whatsapp</option>
 												<option value="facebook">Facebook</option>
@@ -309,7 +328,7 @@
 										<div class="form-holder form-holder-2">
 											<fieldset>
 												<legend>Motivation Video Link</legend>
-												<input type="text" class="form-control" id="videolink" name="source" placeholder="Enter Your Link Here" required>
+												<input type="text" class="form-control" id="videolink" name="videolink" placeholder="Enter Your Link Here" required>
 											</fieldset>
 										</div>
 									</div>
@@ -326,9 +345,19 @@
 											</fieldset>
 										</div>
 									</div>
+									<p>Note: If you have the referral code of an IYS Influencer, you can input it below. If not. just leave it empty.</p>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<fieldset>
+												<legend>Referral Code</legend>
+												<input type="text" class="form-control" id="refferal" name="refferal" placeholder="Enter Your Code Here" required>
+											</fieldset>
+										</div>
+									</div>
 								</div>	
 							</div>
 						</section>
+						
 		        	</div>
 		        </form>
 			</div>
