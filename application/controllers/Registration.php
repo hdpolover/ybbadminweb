@@ -25,8 +25,6 @@ class Registration extends CI_Controller
 
     public function save_new_participants()
     {
-        $now = new DateTime();
-
         $id_participant = $this->input->post('id');
         $photo = $this->input->post('image');
         $full_name = $this->input->post('fullname');

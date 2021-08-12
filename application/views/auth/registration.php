@@ -15,18 +15,18 @@
 	<div class="page-content">
 		<div class="form-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" action="<?= base_url('registration/save_new_participants'); ?>"> method="post" enctype="multipart/form-data">
+		        <form class="form-register" action="<?= base_url('registration/save_new_participants'); ?>" method="post" enctype="multipart/form-data">
 				
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
 			            	<p class="step-icon"><span>01</span></p>
-			            	<span class="step-text">Peronal Infomation</span>
+			            	<span class="step-text">Personal Infomation</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Peronal Infomation</h3>
+									<h3 class="heading">Personal Infomation</h3>
 									<p>Please enter your infomation and proceed to the next step so we can build your accounts.  </p>
 								</div>
 								<div class="form-row">
@@ -95,16 +95,6 @@
 										<fieldset>
 											<legend>Address</legend>
 											<input type="text" class="form-control" id="address" name="address" style="height:100px" placeholder="Enter your complete address" required>
-										</fieldset>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend>Birth Date</legend>
-											<div class="form-row">
-												<input type="date" name="birthdate" class="form-control" id="birthdate" style="color: black;" required>
-											</div>
 										</fieldset>
 									</div>
 								</div>

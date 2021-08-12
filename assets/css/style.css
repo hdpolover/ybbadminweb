@@ -521,7 +521,7 @@ body {
 	    margin-right: 20px;
 	}
 } 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 800px) {
 	.form-register .content .inner {
 	    padding: 0 30px;
 	}
